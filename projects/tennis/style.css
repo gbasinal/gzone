@@ -1,0 +1,140 @@
+.hidden{
+	display:none;
+}
+
+.hiddenBtn{
+	display:none !important;
+}
+
+.gameArea{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.continueMsg{
+	position: absolute !important;
+	top: 25% !important;
+	/* bottom: 0; */
+	left: 0 !important;
+	right: 0 !important;
+	margin: auto !important;
+	/* height: 100%; */
+}
+
+.scoreHolder{
+	width: 45%;
+	height:250px;
+	
+	border:solid 2px black;
+	font-size: 100px;
+	padding: 10px;
+}
+
+.welcome{
+	
+	z-index: 1050;
+    border: solid 4px dodgerblue !important;
+
+}
+
+.welcomeContentModal{
+	background-color: white !important;
+
+}
+
+.backdrop{
+	background-color: rgb(0,0,0) !important;
+	background-color: rgba(0,0,0,0.4) !important;
+	z-index: 99999 !important;
+
+}
+
+.w-40{
+	width:40%;
+}
+
+.report{
+	position: fixed;
+    top: 85%;
+    left: 40%;
+}
+
+.reportBtn{
+	position: fixed;
+    top: 88%;
+    left: 47%;
+    z-index: 99999;
+
+}
+
+#pauseBtn{
+	display:none;
+	position: fixed;
+    top: 16%;
+    left: 29%;;
+    z-index: 99999;
+}
+
+#unpauseBtn{
+	display:none;
+	position: fixed;
+    top: 16%;
+    left: 29%;;
+    z-index: 99999;
+}
+
+
+.animate{
+   
+    
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 2s;
+}
+
+@-webkit-keyframes example {
+    0%   {font-size: 80px;}
+    25%  {font-size: 100px;}
+    50%  {font-size: 80px;}
+    100% {font-size: 100px;}
+}
+
+
+@keyframes example {
+    0%   {font-size: 80px;}
+    25%  {font-size: 100px;}
+    50%  {font-size: 80px;}
+    100% {font-size: 100px;}
+}
+
+
+
+
+.stopAnimation{
+	-webkit-animation-name: idle; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: idle;
+    animation-duration: 2s;
+}
+
+
+
+@-webkit-keyframes idle {
+    0%   {font-size: 100px;}
+    25%  {font-size: 100px;}
+    50%  {font-size: 80px;}
+    100% {font-size: 100px;}
+}
+
+
+@keyframes idle {
+    0%   {font-size: 100px;}
+    25%  {font-size: 100px;}
+    50%  {font-size: 100px;}
+    100% {font-size: 100px;}
+}

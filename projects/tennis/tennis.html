@@ -1,0 +1,880 @@
+<!-- CREATED AND DEVELOPED BY GIE BASINAL-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		PingPong
+	</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+<div class="card float-right" style="width: 20rem;">
+  <div class="card-block">
+    <h4 class="card-title">Leaderboard:</h4>
+    <p class="card-text">Rankings change ever 24 hours</p>
+  </div>
+  <ol class="list-group">
+    <li class="list-group-item">Top 1</li>
+    <li class="list-group-item">Top 2</li>
+    <li class="list-group-item">Top 3</li>
+  </ol>
+</div>
+
+
+
+
+
+<div class="form-group col-3">
+	<label class=" col-form-label " id="labelName" >Tell me your name:</label>
+	<input type="text" class=" form-control" id="playerName">
+
+	<label class=" col-form-label " id="lvlLabel" >Select your difficulty level:</label>
+	<select class="form-control" onchange="lvlSelect()" id="lvlSelect" required>
+		
+		<option value=1>Easy</option>
+		<option value=2>Medium</option>
+		<option value=3>Hard</option>
+	</select>
+
+	<select class="form-control " id="disabledLvlSelect" disabled style="display: none;">
+		
+		<option value=1>Easy</option>
+		<option value=2>Medium</option>
+		<option value=3>Hard</option>
+	</select>
+
+
+
+
+
+	<br><button  class="btn btn-outline-primary" onclick="gameStart()" id="startBtn">Start</button>
+	<button  class="btn btn-outline-primary" onclick="restart()" style="display:none;" id="restartBtn">Restart Game</button>
+
+
+</div>
+<div class="clearfix"></div>
+
+<div class="card float-right" style="width: 20rem;">
+	<div class="card-block">
+		<h4 class="card-title">Updates:</h4>
+		<p class="card-text">Updates are being made from time to time. But dont worry, an update wont affect your current game.</p>
+	</div>
+	<div id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="card">
+
+
+			<div class="card-header" role="tab" id="headingOne">
+				<h5 class="mb-0">
+				<a data-toggle="collapse" href="#aug42017">
+					August 4, 2017
+				</a>
+				</h5>
+			</div>
+
+			<div id="aug42017" class="collapse show" >
+				<div class="card-block">
+				<p>1. Instructions and Controls added at the left side of the page</p>
+				<p>2. Added Pause and UnPause button but you might experience some glitch since it's still not fully functional</p>
+				<p>3. Fixed minor glitch. Report button is now clickable in game but you might still experience some glitches since it's not yet fully functional</p>
+				<p>4. Changed the paddles to a Sprite. Adjusted the spawn point and goal line for the ball</p>
+				</div>
+			</div>
+
+
+			<div class="card-header" role="tab" id="headingOne">
+				<h5 class="mb-0">
+				<a data-toggle="collapse" href="#aug32017">
+					August 3, 2017
+				</a>
+				</h5>
+			</div>
+
+			<div id="aug32017" class="collapse " >
+				<div class="card-block">
+				<p>1. Leaderboard has been added at the right side of the page</p>
+				<p>2. Scoring has been modified. Instead of getting a 1 point increment per win, score will now be set to 0 - 15 - 30 - 40.  After getting 40 points, player will get 1 set point and for a player to win the match player will need 4 set points</p>
+				<p>3. Disabled the difficulty level option once game has started</p>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+</div>
+
+
+<div class="card" style="width: 20rem;">
+  <div class="card-block">
+    <h4 class="card-title">Instructions:</h4>
+    <p class="card-text">Start by indicating your name above and by choosing your difficulty level</p>
+    <h4 class="card-title">Controls:</h4>
+    <p class="card-text">Drag the mouse up and down to move the paddle/racket</p>
+   
+  </div>
+</div>
+
+<div>
+	<button class="btn btn-outline-primary btn-sm " id="pauseBtn" onclick="pauseBtn()">Pause</button>
+	<button class="btn btn-outline-primary btn-sm " id="unpauseBtn" onclick="unpauseBtn()">Unpause</button>
+	<canvas id="gameCanvas" width="800" height="600" class="gameArea" ></canvas>	
+	<p class="report">Found any Bugs/Glitches? Click the Report Button</p>
+	<button class="btn btn-outline-primary btn-sm reportBtn" id="reportBtn" onclick="reportForm()">Report</button>
+</div>
+
+<div class="hidden" id="scoreModal">
+	<div class="card w-40 continueMsg" >
+		<div class="card-block clearfix">
+			<h3 class="card-title">Score:</h3>
+			<p class="scoreHolder float-left text-center animate" id="scoreHolderP1"></p>
+			<p class="scoreHolder float-left text-center animate" id="scoreHolderP2"></p>
+			<p class="clearfix"></p>
+			<p class="card-text">Do you want to continue? </p>
+			<button class="btn btn-primary" id="yesBtn" onclick="moveEverything()">Yes</button>
+			<button class="btn btn-primary" id="noBtn" onclick="restart()">No</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="hidden modal backdrop" id="welcomeModal">
+	<div class="card w-40 continueMsg welcome" >
+		<div class="card-block clearfix welcomeContentModal">
+		
+				<h3 class="card-title text-center">Welcome To EnfraPONG!</h3>
+				<button class="btn btn-primary  btn-block" onclick="hideWelcome()">Play Game</button>
+		
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="hidden modal backdrop" id="reportForm">
+	<div class="card w-40 continueMsg welcome" >
+		<div class="card-block clearfix welcomeContentModal">
+		
+			<div class="form-group">
+				<label for="exampleTextarea">Tell me what happened:</label>
+				<button type="button" class="close" id="closeBtnReportForm" onclick="closeBtnReportForm()">
+		          <span aria-hidden="true">×</span>
+		        </button>
+				<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Since this function is not yet working, you may message me at hangouts for the meantime"></textarea>
+			</div>
+			<button class="btn btn-primary  btn-block" onclick="hideReportForm()" id="submitReport">Submit</button>
+		
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<script>
+
+// notes for difficulty level :
+// easy = ball speed :15 paddle speed:13
+// normal = ball speed : 20 paddle speed:18
+//hard = ball speed :30 paddle speed 29
+
+
+// 	var person = prompt("Tell me your name:");
+
+// 	if (person == null || person == "") {
+// 	txt = "User cancelled the prompt.";
+// 	} else {
+// 	txt = "Hello " + person + "! Enjoy the game!";
+// 	}
+// 	alert(txt);	
+
+// 	var speed = prompt("Please choose from 1-20 to set the ball speed, 20 being the fastest and 1 the slowest:", "");
+
+// 	if (isNaN(speed) || typeof speed !== " ") {
+//   alert("Sorry, that wasn't a number. Please refersh the page and try again.");
+// } else {
+//   alert("Yep! " + speed + " is a number! Refresh the page to enter another one!");
+// };
+
+
+
+// used for the dimensional information of the canvas
+	var canvas; 
+// contains the graphical information of the canvas
+	var canvasContext;
+
+	var ballX =100;
+	// ball movement speed horizontally
+	var ballSpeedX = 15;
+
+	var ballY =100;
+	// ball movement speed vertically
+	var ballSpeedY =15;
+
+	var player1Score = 0;
+	var player2Score = 0;
+
+	var player1SetScore = 0;
+	var player2SetScore = 0;
+
+	var player1SetScoreConvert = 0;
+	var player2SetScoreConvert = 0;
+	
+
+	var paddle1Y = 250;
+	var paddle2Y = 250;
+
+	var leftSide;
+	var rightSide;
+
+	var bgImg = new Image();
+	bgImg.src = "tablebg.jpg";
+
+
+	var ballImg= new Image();
+	ballImg.src = "ball.png";
+
+
+	var paddleLeft = new Image();
+	paddleLeft.src = "spriteP1.png";
+
+	var paddleRight = new Image();
+	paddleRight.src = "spriteP2.png";
+
+	const paddleThickness = 80;
+	// range of the sprites vertically
+	const paddleHeight = 100;
+
+	
+
+
+
+
+	// determines the coordinates of your mouse pointer
+	function calculateMousePos(evt){
+		var rect = canvas.getBoundingClientRect();
+		var root = document.documentElement;
+1
+		// to make sure that the pointer's coordinate will stay inside the canvas area
+		var mouseX = evt.clientX - rect.left - root.scrollLeft;
+		var mouseY = evt.clientY - rect.top - root.scrollTop;
+		return {
+			x:mouseX,
+			y:mouseY
+		};
+	}
+
+
+
+
+	window.onload=function(){
+
+		document.getElementById('welcomeModal').style.display="block";
+		document.getElementById('labelName').style.display="block";
+		document.getElementById('playerName').style.display="block";
+		document.getElementById('lvlLabel').style.display="block";
+		namePlayer=document.getElementById('playerName');
+		namePlayer.addEventListener("input",storeName);
+		// level=document.getElementById('ballSpeed').style.display="block";
+
+
+
+		// canvas=document.getElementById('gameCanvas');
+		
+		// canvasContext = canvas.getContext('2d');
+
+		
+
+		// var framesPerSecond =30;
+		// // setinterval is a js method that specifies the intervals in milliseconds
+		// setInterval(callBoth ,1000/framesPerSecond );
+
+
+		// canvas.addEventListener('mousemove', function(evt){
+		// 	var mousePos = calculateMousePos(evt);
+		// 	paddle1Y=mousePos.y-(paddleHeight/2);
+		// })
+	}
+
+	function hideWelcome(){
+		document.getElementById('welcomeModal').style.display="none";
+	}
+
+	function reportForm(){
+
+		document.getElementById('reportForm').style.display="block";
+
+		
+	}
+
+	function hideReportForm(){
+		document.getElementById('reportForm').style.display="none";
+		alert("Thank You!");
+	}
+
+	function closeBtnReportForm(){
+		document.getElementById('reportForm').style.display="none";
+			
+	}
+
+	function pauseBtn(){
+
+		ballSpeedX = 0;
+		ballSpeedY = 0;
+		
+		document.getElementById('pauseBtn').style.display="none";
+		document.getElementById("unpauseBtn").style.display="block"
+		
+	}
+
+	function unpauseBtn(){
+		lvlSelect();
+		document.getElementById('pauseBtn').style.display="block";
+		document.getElementById("unpauseBtn").style.display="none";
+	}
+	
+
+	function storeName(){
+
+		if (namePlayer.value == null || namePlayer.value == "") {
+		 	player="unknown player";
+		}else{
+			player = namePlayer.value;
+		}
+
+	}
+
+
+	function lvlSelect(){
+		document.getElementById('scoreModal').setAttribute("style", "display:none;z-index:9999;position:fixed;top:0;right:0;left:0;bottom:0;width:800px;height: 100%;margin:auto;");
+		lvl = document.getElementById('lvlSelect').value;
+
+		if (lvl == 2 ){
+			ballSpeedX = 20;
+			ballSpeedY = 20;
+			
+
+		}	else if  (lvl == 3){
+				ballSpeedX = 30;
+				ballSpeedY = 30;
+				
+				
+			} else{
+				ballSpeedX = 15;
+				ballSpeedY = 15;
+				
+			}
+
+		
+
+	}
+
+
+	
+
+
+
+	function gameStart(){
+
+
+		document.getElementById('playerName').style.display="none";
+		document.getElementById('labelName').style.display="none";
+		document.getElementById('startBtn').style.display="none";
+		document.getElementById('lvlSelect').style.display="none";
+		document.getElementById('disabledLvlSelect').style.display="block";
+		document.getElementById('restartBtn').style.display="inline-block";
+
+
+		if (namePlayer.value == null || namePlayer.value == "") {
+			player="Player";
+			alert( "Hello "+ player + ", game will start now!");
+		}else{
+		alert( "Hello "+ player + ", game will start now!");
+		}
+
+		
+
+		
+		canvas=document.getElementById('gameCanvas');
+	
+		canvasContext = canvas.getContext('2d');
+
+		
+		document.getElementById('pauseBtn').style.display="inline-block";
+
+		
+
+
+		var framesPerSecond =30;
+		// setinterval is a js method that specifies the intervals in milliseconds
+		setInterval(callBoth ,1000/framesPerSecond );
+
+
+		canvas.addEventListener('mousemove', function(evt){
+			var mousePos = calculateMousePos(evt);
+			paddle1Y=mousePos.y-(paddleHeight/2);
+		})
+		
+	}
+
+
+	function restart(){
+		location.reload();
+	}
+
+
+	// function scoreCount{
+	// 	if(player1Score == 11 || player2Score == 11)
+	// }
+
+
+
+
+	
+
+	function lvlSelectPaddleSpeed(){
+		
+		lvl = document.getElementById('lvlSelect').value;
+		paddle2YCenter = paddle2Y + (paddleHeight/2);
+
+		if (lvl == 2 ){
+			if(paddle2YCenter < ballY){
+				paddle2Y += 18;
+			}else {
+				paddle2Y -=  18;
+			}
+		
+
+		}else if  (lvl == 3){
+				if(paddle2YCenter < ballY){
+					paddle2Y += 28;
+				}else {
+					paddle2Y -=  28;
+				}
+				
+			} else{
+				if(paddle2YCenter < ballY){
+					paddle2Y += 13;
+				}else {
+					paddle2Y -=  13;
+				}
+			}
+
+		
+
+	}	
+
+		
+
+		
+	
+
+	
+
+		
+
+
+	// function ballReset(){
+
+	// 	// insert here the modal/alert if player wishes to continue the game 
+
+
+
+
+
+
+
+	// 	for (leftSide = 0; leftSide <= 3; leftSide++) {
+	// 		leftSide1()
+	// 		console.log(+1);
+	// 	}
+
+	// 	for (rightSide = 0; rightSide <= 3; rightSide++) {
+	// 		rightSide1();
+	// 		console.log(+2);
+
+	// 	}
+
+
+
+		
+	// }
+
+
+
+
+
+		
+
+
+	function callBoth(){
+		moveEverything();
+		drawEverything();
+
+
+	}
+// note: the nearer the speed of the ball to the ai's paddle, the more impossible it is to win vs. ai
+// movement speed of ai
+	// function computerMovement(){
+	
+	// 	var paddle2YCenter = paddle2Y + (paddleHeight/2);
+		
+		
+	// 	if(paddle2YCenter < ballY){
+	// 		paddle2Y += 28;
+			
+	// 	}else {
+	// 		paddle2Y -= 28;
+			
+	// 	}
+
+	// }
+
+	function paddleP1(){
+		if(ballX < 40 ){
+			if(ballY > paddle1Y && ballY < paddle1Y + paddleHeight){
+				ballSpeedX = -ballSpeedX;
+				
+			}else{
+
+				player2PrevScore = player2SetScore;
+
+
+				
+				player2SetScore = player2SetScore+1;
+
+				player2SetScoreConvert =player2SetScore;
+
+				if(player2SetScore > player2PrevScore){
+						showScoreP2();
+
+				}	
+			}
+		}
+	}
+
+	function paddleP2(){
+		if(ballX > canvas.width-60){
+			if(ballY > paddle2Y && ballY < paddle2Y + paddleHeight){
+				ballSpeedX = -ballSpeedX;
+				
+			}else{
+	
+				player1PrevScore = player1SetScore;
+				
+				player1SetScore = player1SetScore+1;
+
+				player1SetScoreConvert =player1SetScore;
+
+				if(player1SetScore > player1PrevScore){
+					showScoreP1();
+				}
+			}
+		}
+	}
+
+
+	function showScoreP2(){
+			
+
+		convertScore();
+		var score = document.getElementById('scoreModal').setAttribute("style", "display:block;z-index:9999;position:fixed;top:0;right:0;left:0;bottom:0;width:800px;height: 100%;margin:auto;");
+		document.getElementById('scoreHolderP2').innerHTML=player2SetScoreConvert;
+		document.getElementById('scoreHolderP2').setAttribute("style", "animation-name:example;");
+		document.getElementById('scoreHolderP1').innerHTML=player1SetScoreConvert;
+		document.getElementById('scoreHolderP1').setAttribute("style", "animation-name:idle;");
+		
+		gamePause();
+		
+	
+		leftSide1();
+
+		
+	}
+
+	function showScoreP1(){
+		
+	
+
+		
+		convertScore();
+		var score =	document.getElementById('scoreModal').setAttribute("style", "display:block;z-index:9999;position:fixed;top:0;right:0;left:0;bottom:0;width:800px;height: 100%;margin:auto;");
+		document.getElementById('scoreHolderP1').innerHTML=player1SetScoreConvert;
+		document.getElementById('scoreHolderP1').setAttribute("style", "animation-name:example;");
+		document.getElementById('scoreHolderP2').innerHTML=player2SetScoreConvert;
+		document.getElementById('scoreHolderP2').setAttribute("style", "animation-name:idle;");
+	
+		gamePause();
+		
+		
+		
+		rightSide1();
+
+	}
+
+
+	
+
+
+	function gamePause(){
+		ballSpeedX = 0;
+		ballSpeedY = 0;
+		
+		document.getElementById('yesBtn').addEventListener('click',lvlSelect);
+		document.getElementById('closeBtnReportForm').addEventListener('click',moveEverything);
+		// document.getElementById('yesBtn').addEventListener('click',lvlSelect);
+		
+	}
+
+	function convertScore(){
+
+		switch(player1SetScoreConvert){
+
+			case 0 :
+			player1SetScoreConvert = 0;
+			break;
+			
+		    case 1 :
+			player1SetScoreConvert = 15;
+			break;
+			case 2 :
+			player1SetScoreConvert = 30;
+			break;
+			case 3 :
+			player1SetScoreConvert = 40;
+			break; 
+			case 4 :
+			player1SetScoreConvert = "W";
+			break; 
+		
+		}
+
+		switch(player2SetScoreConvert){
+	
+			case 0 :
+			player2SetScoreConvert = 0;
+			break;
+
+		    case 1 :
+			player2SetScoreConvert = 15;
+			break;
+			case 2 :
+			player2SetScoreConvert = 30;
+			break;
+			case 3 :
+			player2SetScoreConvert = 40;
+			break; 
+			case 4 :
+			player2SetScoreConvert = "W";
+			break; 
+		
+		}
+	}
+
+
+	function leftSide1(){
+
+		addPlayer1Score();
+		addPlayer2Score();
+		ballHeight = Math.floor((Math.random() * canvas.height) + 1);
+		ballX=canvas.width-700;
+		ballY=paddle2Y;
+		}
+
+	function rightSide1(){
+		addPlayer1Score();
+		addPlayer2Score();
+		ballHeight = Math.floor((Math.random() * canvas.height) + 1);
+		ballX=canvas.width-100;
+		ballY=paddle2Y;
+	}
+
+
+	function addPlayer1Score(){
+		if(player1SetScoreConvert == "W"){
+			player1Score = player1Score+1;
+			player1SetScoreConvert =0;
+			player2SetScoreConvert=0;
+			player1SetScore = 0;
+			player2SetScore = 0;
+			alert(namePlayer.value + " wins " + " set" + " "+ player2Score);
+
+		}
+
+		if (player1Score == 4) {
+			player1Score = 0;
+			player2Score = 0;
+			alert(namePlayer.value + " wins " + " the game!");
+		}
+	}
+	function addPlayer2Score(){
+		if(player2SetScoreConvert == "W"){
+			player2Score = player2Score+1;
+			player1SetScoreConvert =0;
+			player2SetScoreConvert=0;
+			player1SetScore = 0;
+			player2SetScore = 0;
+			alert("Computer" + " wins " + " set" + " "+ player2Score);
+
+		}
+
+		if (player2Score == 4) {
+			player1Score = 0;
+			player2Score = 0;
+			alert("Computer" + " wins "  + " the game!");
+		}
+	}
+
+
+
+
+	function moveEverything(){
+		
+		lvlSelectPaddleSpeed();
+
+
+
+
+		ballX = ballX + ballSpeedX;
+		ballY = ballY + ballSpeedY;
+
+		
+		// vertical movement
+
+
+		// paddle 1
+		paddleP1();
+
+		// paddle2
+		paddleP2();
+
+
+		//  horizontal movement
+		
+		if(ballY < 0){
+			ballSpeedY = -ballSpeedY;
+		}
+		if(ballY > canvas.height){
+			ballSpeedY = -ballSpeedY;
+		}
+		
+	}
+
+
+
+	function drawEverything(){
+		
+
+		// game area
+		draw(canvasContext,bgImg);
+
+		// player 1 paddle
+		drawPaddleLeft(canvasContext,paddleLeft);
+	 	// colorRect(0,paddle1Y,paddleThickness,100,'blue');
+		// player  paddle
+		drawPaddleRight(canvasContext,paddleRight);
+	 	// colorRect(canvas.width-10,paddle2Y,paddleThickness,100,'blue');
+
+	 	// ball
+
+	 	drawBall(canvasContext,ballImg);
+	 	// colorCircle(ballX,ballY,15,'black');
+
+	 	// scoreboard
+	 	canvasContext.fillStyle= "#fff";
+	 	canvasContext.font = "25px Verdana";
+	 	canvasContext.fillText(player1Score, 100,100);
+	 	canvasContext.fillText(player2Score, canvas.width-100,100);
+	
+	}
+
+	function draw(canvasContext, bgImg){
+
+		if(!bgImg.complete){
+			setTimeout(function(){
+			draw(canvasContext,bgImg);
+			}, 50);
+			return;
+		}
+		canvasContext.drawImage(bgImg,0,0,canvas.width,canvas.height);
+	}
+
+	function drawBall(canvasContext,ballImg){
+		if(!ballImg.complete){
+			setTimeout(function(){
+			draw(canvasContext,ballImg);
+			}, 50);
+			return;
+		}
+		canvasContext.drawImage(ballImg,ballX,ballY,25,25);
+	}
+
+
+	function drawPaddleLeft(canvasContext,paddleLeft){
+		if(!paddleLeft.complete){
+			setTimeout(function(){
+			draw(canvasContext,paddleLeft);
+			}, 50);
+			return;
+		}
+		canvasContext.drawImage(paddleLeft,-13,paddle1Y,paddleThickness,200);
+	}
+
+	function drawPaddleRight(canvasContext,paddleRight){
+		if(!paddleRight.complete){
+			setTimeout(function(){
+			draw(canvasContext,paddleRight);
+			}, 50);
+			return;
+		}
+		canvasContext.drawImage(paddleRight,canvas.width-67,paddle2Y,paddleThickness,200);
+	}
+
+
+
+
+
+	// function colorCircle(centerX,centerY,radius,drawColor){
+	// 	canvasContext.fillStyle= "#fff";
+	// 	canvasContext.beginPath();
+	// 	canvasContext.arc(centerX,centerY,radius,0,Math.PI*2,true);
+	// 	canvasContext.fill();
+	// }
+
+	// function colorRect(leftX,topY,width,height,drawColor){
+	// 	canvasContext.fillStyle = drawColor;
+	// 	canvasContext.fillRect(leftX,topY,width,height);
+	// }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>

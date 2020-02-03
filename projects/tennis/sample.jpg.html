@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<label>Tell me your name :</label>
+	<input type="text" id="playerName">
+	<input type="button"  onclick="trySubmit()" value="test">
+
+
+
+<button onclick="sampleAlert()">try</button>
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+function trySubmit(){
+ playerName = document.getElementById("playerName").value;
+
+}
+
+
+
+function sampleAlert(){
+	trySubmit();
+	var test = playerName;
+	alert(test);
+}
+
+
+
+
+
+</script>
+
+</body> 

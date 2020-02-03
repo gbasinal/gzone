@@ -1,0 +1,36 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+	font-size: 1.04vw;
+	@media only screen and (max-width: 1024px){
+		font-size: 18px;
+	} 
+	@media only screen and (max-width: 991px){
+		font-size: 14px;
+	}
+	.d-flex {
+		display: flex;
+	}
+	.flex-row {
+		flex-direction: row !important;
+	}
+	.flex-column {
+		flex-direction: column !important;
+	}
+	.m-auto {
+		margin: auto;
+	}
+	.justify-flex-end {
+		justify-content: flex-end;
+	}
+	.align-flex-end {
+		align-items: flex-end;
+	}
+	.justify-space-between {
+		justify-content: space-between;
+	}
+
+}
