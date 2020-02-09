@@ -34,3 +34,35 @@ body{
 	}
 
 }
+
+
+.menu-button {
+	&:focus {
+		outline: none !important;
+	}
+	@media only screen and (max-width: 1024px){
+		top: 65px;
+		left: 50px;
+		width: 50px;
+		&:before, &:after {
+			width: 80%;
+		}
+		span {
+			width: 80%;
+		}
+	}
+	@media only screen and (max-width: 767px){
+		top: 4%;
+		left: 8%;
+		width: 30px;
+	}
+}
+
+.skills-container {
+	div {
+		outline: none !important;
+		&:focus {
+			outline: none;
+		}
+	}
+}
