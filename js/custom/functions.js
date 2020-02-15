@@ -5,7 +5,8 @@
     
 	Functions.prototype.init = function() {
         var _self = this;
-        _self.landingAnimationInit()
+        _self.landingAnimationInit();
+        _self.formResetAfterSending();
 	};
 
 
@@ -75,6 +76,16 @@
 
         }, 50);
     }
+
+    Functions.prototype.formResetAfterSending = function(){
+        $('#contactForm').submit(function (e) {
+            setTimeout(function(){
+                $('#contactForm')[0].reset();
+            },500)
+            
+        });
+    }
+
 
     app.Functions = Functions;
 
