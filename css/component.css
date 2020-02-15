@@ -209,7 +209,7 @@ hr {
 	left: 0;
 	z-index: 1000;
 	opacity: 0;
-	background: rgba(51, 87, 105, 0.79);
+	background: rgba(255, 255, 255, 0.5);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
