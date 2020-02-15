@@ -84,3 +84,34 @@ body{
 #page-contact label {
 	margin-bottom: em(20);
 }
+
+#contactForm-Modal {
+	font-size: 16px;
+	margin-top: 0;
+	
+}
+
+
+#modal-5{
+	.md-content {
+		padding: 15px;
+	}
+	h6{
+		@media only screen and (max-width: 767px){
+			font-size: 16px;	
+		}
+		
+	}
+	#contactForm-Modal {
+		@media only screen and (max-width: 767px){
+			.group {
+				margin-bottom: 20px;
+			}
+			input {
+				padding-bottom: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+	
+}

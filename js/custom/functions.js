@@ -84,6 +84,11 @@
             },500)
             
         });
+        $("#contactForm-Modal").on("submit", function(){
+            setTimeout(function(){
+                $("#contactForm-Modal")[0].reset();
+            },500)
+        })
     }
 
 

@@ -576,7 +576,7 @@
 				<h3>Contact Form</h3>
 				<h6 class="text-center">Interested? Let's team up to turn those ideas into beautiful designs! </h6>
 				<div>
-	                <form name="sentMessage" id="contactForm" novalidate>
+	                <form name="sentMessage" id="contactForm-Modal" novalidate action="https://formspree.io/mpzdezde">
 	                  <div class="group">
 	                  	<label>Name</label>
 	                    <input type="text"  id="name" required data-validation-required-message="Please enter your name."><span class="highlight"></span><span class="bar"></span>
@@ -589,7 +589,7 @@
 	                  	<label>Message</label>
 	                    <textarea rows="5"  id="message" required data-validation-required-message="Please enter a message."></textarea><span class="highlight"></span><span class="bar"></span>
 	                  </div>
-	                  <button id="sendMessage" name="sendMessage" type="submit" value="Send Message" class="btn btn-outline-info btn-lg btn-block">Send Message</button>
+	                  <button id="sendMessage" type="submit" value="Send Message" class="btn btn-outline-info btn-lg btn-block">Send Message</button>
 	                </form>					
 					<button class="md-close btn btn-outline-info">Close me!</button>
 				</div>
@@ -616,6 +616,7 @@
 		// this is important for IEs
 		var polyfilter_scriptpath = '/js/';
 	</script>
+	<script src="js/modalEffects.js"></script>
 	<script src="js/cssParser.js"></script>
 	<script src="js/css-filters-polyfill.js"></script>	
 	<script src="js/main.js"></script>

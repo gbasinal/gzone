@@ -4956,4 +4956,22 @@ body {
 #page-contact label {
   margin-bottom: 1.25em; }
 
+#contactForm-Modal {
+  font-size: 16px;
+  margin-top: 0; }
+
+#modal-5 .md-content {
+  padding: 15px; }
+
+@media only screen and (max-width: 767px) {
+  #modal-5 h6 {
+    font-size: 16px; } }
+
+@media only screen and (max-width: 767px) {
+  #modal-5 #contactForm-Modal .group {
+    margin-bottom: 20px; }
+  #modal-5 #contactForm-Modal input {
+    padding-bottom: 0;
+    margin-bottom: 0; } }
+
 /*# sourceMappingURL=build.css.map */
