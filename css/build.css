@@ -4941,4 +4941,19 @@ body {
   .skills-container div:focus {
     outline: none; }
 
+.group {
+  margin-bottom: 3.125em;
+  text-align: center; }
+
+#page-contact input, #modal-5 input, #page-contact textarea, #modal-5 textarea {
+  color: white;
+  padding-bottom: 0.625em;
+  text-align: center; }
+
+#contactForm {
+  margin-top: 3.125em; }
+
+#page-contact label {
+  margin-bottom: 1.25em; }
+
 /*# sourceMappingURL=build.css.map */

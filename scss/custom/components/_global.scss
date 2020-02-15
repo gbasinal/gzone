@@ -66,3 +66,21 @@ body{
 		}
 	}
 }
+
+.group {
+	margin-bottom: em(50);
+	text-align: center;
+}
+#page-contact input, #modal-5 input, #page-contact textarea, #modal-5 textarea {
+	color: white;
+	padding-bottom: em(10);
+	text-align: center;
+}
+
+#contactForm {
+	margin-top: em(50);
+}
+
+#page-contact label {
+	margin-bottom: em(20);
+}
