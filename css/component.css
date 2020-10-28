@@ -425,7 +425,7 @@ hr {
 	font-weight: bold;
 	position: relative;
 	letter-spacing: 1px;
-	text-transform: uppercase;
+	text-transform: lowercase;
 }
 
 .link:hover,
@@ -525,7 +525,7 @@ hr {
 /* page content */
 
 .info {
-	font-size: 1.25em;
+	font-size: 1.2em;
 	max-width: 100%;
 	margin-top: 1.5em;
 	text-align: justify;
