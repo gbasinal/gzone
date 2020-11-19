@@ -6536,4 +6536,30 @@ body .justify-space-between {
 .text-lowercase {
   text-transform: lowercase !important;
 }
+
+.grid {
+  background: #DDD;
+}
+
+/* clear fix */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item img {
+  display: block;
+  width: 100%;
+}
 /*# sourceMappingURL=build.css.map */
